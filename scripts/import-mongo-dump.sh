@@ -10,6 +10,6 @@ if [[ "${GZIP}" == "true" ]]; then
 	GZIP=" --gzip"
 fi
 
-eval "docker-compose run --rm ${MONGO_CONTAINER} mongorestore -h mongo --drop --archive=/dump/${IMPORTFILE}${GZIP}"
+eval "docker exec -it ${MONGO_CONTAINER} mongorestore -h mongo --drop --archive=/dump/${IMPORTFILE}${GZIP}"
 
 exit 0
